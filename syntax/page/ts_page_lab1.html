@@ -1,0 +1,86 @@
+<script type="text/typescript">
+    function hello(name='default_name': string) {
+        console.info(`my name is ${name}`);
+    }
+
+    function print_num(value: numberx) {
+
+    }
+
+    namespace org.forest {
+        export class Forest{}
+        export interface TreeName {
+            hello(): number;
+            name: string;
+            value: string;
+        }
+
+        export function clip_tree(names: TreeName[]) {
+            console.info('clip tree action ...');
+            console.info('names: ', names)
+        }
+    }
+
+    namespace tool {
+        export class LinkManager {
+            sayok() {
+
+            }
+        }
+
+        export class BrowserManager {
+            execute() {
+
+            }
+        }
+
+        // export count: number;
+
+        class NetManager{
+
+        }
+        // not work
+        export NetManager;
+
+        // export {LinkManager};
+    }
+
+    function hello_obj(obj: HelloInterface) {
+        console.info(`hello using interface, my name is: ${obj.hello}`);
+    }
+
+    interface HelloInterface {
+        name: string
+    }
+
+    class TSManager {
+        constructor() {
+
+        }
+        parse(obj:HelloInterface){
+            let obj_string = JSON.stringify(obj);
+        }
+    }
+
+    hello(1);
+
+    let manager = new TSManager();
+
+</script>
+
+<script src="https://cdn.bootcss.com/typescript/3.1.3/typescript.js"></script>
+
+<script>
+    let nodes = document.querySelectorAll('script[type="text/typescript"]');
+    let es5_source = "";
+    let ts_source="";
+    nodes.forEach(function (node) {
+        ts_source += node.innerHTML;
+
+        let code = ts.transpile(node.innerHTML);
+        es5_source += ts.transpile(code);
+        
+    });
+    eval(es5_source);
+    // debugger;
+</script>
